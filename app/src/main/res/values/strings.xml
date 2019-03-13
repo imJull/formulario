@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">BaseDatos</string>
     <string name="action_settings">Settings</string>
+    <string name="escriba_altura">Ingrese la Altura</string>
+    <string name="fecha_siembra">Fecha de Siembra</string>
+    <string name="ultimo_chequeo">Fecha chequeo</string>
+    <string name="encargado">Nombre del Encargado</string>
 </resources>

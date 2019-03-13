@@ -6,6 +6,8 @@ import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
+import java.util.Locale;
+
 import unadeca.net.basedatos.database.TestDatabase;
 
 @Table(database = TestDatabase.class)
@@ -26,6 +28,10 @@ public class Arbolito extends BaseModel {
 
     @Column
     public String plantado_por;
+
+    public String toString(){
+        return String.format(Locale.getDefault(), "Altura: %d\nFecha plantado: %s\nEncargado: %s", this.altura, this.fecha_plantado, this.plantado_por);
+    }
 
 
 

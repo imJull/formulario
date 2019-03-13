@@ -8,8 +8,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
+
+import java.util.List;
 
 import unadeca.net.basedatos.R;
 import unadeca.net.basedatos.database.models.Arbolito;
@@ -17,12 +21,21 @@ import unadeca.net.basedatos.database.models.Arbolito_Table;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ListView lista;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        lista = findViewById(R.id.lista);
+
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getArbolitos());
+
+        lista.setAdapter(adaptador);
+
+        setAdapter();
 
         Arbolito cedro = new Arbolito();
         cedro.altura = 10;
@@ -47,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
                 //cedro.save();
 
                 //EJEMPLO2 Mostrar la cantidad de arbolitos registrados
-                long contadoArbolitos = SQLite.selectCountOf().from(Arbolito.class).count();
-                Snackbar.make(view, "Hay " + contadoArbolitos + " arbolitos registrados ", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //long contadoArbolitos = SQLite.selectCountOf().from(Arbolito.class).count();
+                //Snackbar.make(view, "Hay " + contadoArbolitos + " arbolitos registrados ", Snackbar.LENGTH_LONG)
+                  //      .setAction("Action", null).show();
             }
         });
     }
@@ -74,5 +87,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private String[] getArbolitos() {
+        List<Arbolito> listado = SQLite.select().from(Arbolito.class).queryList();
+        String[] array = new String[listado.size()];
+        for (int c = 0; c < listado.size(); c++) {
+            array[c] = listado.get(c).toString();
+        }
+        return array;
+    }
+    //Adapdaor
+    private void setAdapter() {
+        lista.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getArbolitos()));
     }
 }
