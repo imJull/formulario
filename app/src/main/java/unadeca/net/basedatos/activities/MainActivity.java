@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         //cedro.plantado_por = "Martin Perez";
         //cedro.save();
 
+        //borrarArbolito();
+
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -182,7 +184,11 @@ public class MainActivity extends AppCompatActivity {
 
     //Borrar algunos registros de las bases de datos
     private void borrarArbolito(){
-        Delete.table(Arbolito.class);
-        SQLite.delete().from(Arbolito.class).where(Arbolito_Table.altura.between(1).and(1000)).execute();
+        //Delete.table(Arbolito.class);
+        setAdapter();
+        SQLite.delete().from(Arbolito.class).where(Arbolito_Table.altura.between(1).and(15)).execute();
+
+        Snackbar.make(view, "Se han borrado los listados de arbolitos", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 }
