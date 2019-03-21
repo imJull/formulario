@@ -1,5 +1,6 @@
 package unadeca.net.basedatos.activities;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,13 +14,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.raizlabs.android.dbflow.sql.language.Delete;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import unadeca.net.basedatos.R;
@@ -112,9 +120,14 @@ public class MainActivity extends AppCompatActivity {
         }
         return array;
     }
-    //Adapdaor
+
+    private List<Arbolito> getListArbolitos() {
+        return SQLite.select().from(Arbolito.class).queryList();
+    }
+    //Adapdador
     private void setAdapter() {
-        lista.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getArbolitos()));
+        //lista.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getArbolitos()));
+        lista.setAdapter(new CustomAdapter(getListArbolitos(), getApplicationContext()));
     }
 
     public void mostrarDialogo(){
@@ -191,4 +204,8 @@ public class MainActivity extends AppCompatActivity {
         Snackbar.make(view, "Se han borrado los listados de arbolitos", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
     }
+
+
+
+
 }
