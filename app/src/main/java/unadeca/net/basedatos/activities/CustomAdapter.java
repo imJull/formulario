@@ -114,7 +114,7 @@ public class CustomAdapter extends ArrayAdapter<Arbolito>{
 
 
 
-        builder.setMessage("LLene toda la información solicitada").setTitle("Crear nuevo arbolito").setCancelable(false)
+      /*  builder.setMessage("LLene toda la información solicitada").setTitle("Crear nuevo arbolito").setCancelable(false)
                 .setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -147,10 +147,11 @@ public class CustomAdapter extends ArrayAdapter<Arbolito>{
         if(s.getEditText().getText().toString().isEmpty()) throw  new Exception("Se ocupa la fecha de siembra del albolito");
         if(a.getEditText().getText().toString().isEmpty()) throw  new Exception("Se ocupa la fecha del chequeo del albolito");
         if(a.getEditText().getText().toString().isEmpty()) throw  new Exception("Se ocupa el nomre del encargado de albolito");
-    }
+    }*/
 
-    private void guardarABD(TextInputLayout a, TextInputLayout s, TextInputLayout c, TextInputLayout e){
-        Arbolito arbolito = new Arbolito();
+    /*private void guardarABD(TextInputLayout a, TextInputLayout s, TextInputLayout c, TextInputLayout e,
+                            Arbolito arbolito){
+        //Arbolito arbolito = new Arbolito();
         arbolito.altura = Integer.parseInt(a.getEditText().getText().toString());
         arbolito.fecha_plantado = s.getEditText().getText().toString();
         arbolito.plantado_por = e.getEditText().getText().toString();
@@ -159,7 +160,7 @@ public class CustomAdapter extends ArrayAdapter<Arbolito>{
         Snackbar.make(view, "Se ha guardado el arbolito", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
 
-        setAdapter();
+        setAdapter();*/
 
     }
 

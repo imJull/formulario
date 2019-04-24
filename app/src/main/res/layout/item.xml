@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="@dimen/imagen"
         android:layout_height="@dimen/imagen"
-        android:src="@drawable/Arbolito"
+        android:src="@drawable/arbolito"
         android:id="@+id/update"
         android:layout_weight="0.1"
         android:scaleType="centerCrop"

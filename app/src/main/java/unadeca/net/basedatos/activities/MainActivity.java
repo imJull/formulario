@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("LOOOL");
 
         lista = findViewById(R.id.lista);
         view = findViewById(R.id.content); //Coordinador que permite anclar vista
